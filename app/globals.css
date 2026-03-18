@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --bg-top: #10253a;
-  --bg-mid: #153b50;
-  --bg-bottom: #0b1a2c;
-  --blob-orange: rgba(255, 124, 48, 0.45);
-  --blob-teal: rgba(19, 181, 169, 0.4);
-  --text-main: #fff9f2;
-  --text-soft: #ffd8c0;
-  --text-fade: #f7cdb6;
+  --bg-top: #071b2f;
+  --bg-mid: #103451;
+  --bg-bottom: #0a263f;
+  --blob-sky: rgba(120, 210, 255, 0.35);
+  --blob-gold: rgba(255, 192, 109, 0.32);
+  --text-main: #f9fdff;
+  --text-soft: #bbe7f8;
+  --text-muted: #d3edf8;
+  --text-fade: #9dc3d4;
 }
 
 * {
@@ -22,35 +23,39 @@
 body {
   font-family: var(--font-sans), sans-serif;
   background:
-    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0) 45%),
-    radial-gradient(circle at 90% 90%, rgba(255, 220, 190, 0.14) 0, rgba(255, 220, 190, 0) 50%),
-    linear-gradient(150deg, var(--bg-top) 0%, var(--bg-mid) 52%, var(--bg-bottom) 100%);
+    radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.16) 0, rgba(255, 255, 255, 0) 38%),
+    radial-gradient(circle at 90% 82%, rgba(255, 221, 178, 0.16) 0, rgba(255, 221, 178, 0) 40%),
+    linear-gradient(155deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .scene {
-  perspective: 1400px;
+  perspective: 1800px;
 }
 
 .card-3d {
   position: relative;
   transform-style: preserve-3d;
-  transform: rotateX(6deg) rotateY(-6deg);
-  transition: transform 500ms ease;
+  transform: rotateX(3deg) rotateY(-4deg);
+  transition: transform 450ms ease;
 }
 
 .scene:hover .card-3d {
-  transform: rotateX(2deg) rotateY(-2deg) translateY(-6px);
+  transform: rotateX(1deg) rotateY(-1deg) translateY(-6px);
 }
 
 .avatar-3d {
-  transform: translateZ(36px);
+  transform: translateZ(28px);
+  box-shadow:
+    0 24px 42px rgba(5, 20, 34, 0.45),
+    0 0 0 6px rgba(255, 255, 255, 0.06);
 }
 
 .social-link {
-  @apply relative flex items-center justify-between overflow-hidden border border-white/20 transition-all duration-300;
-  transform: translateZ(18px);
+  @apply relative flex items-center justify-between overflow-hidden border border-white/25 bg-white/10 transition-all duration-300;
+  transform: translateZ(16px);
+  backdrop-filter: blur(6px);
 }
 
 .social-link > * {
@@ -58,20 +63,30 @@ body {
   z-index: 2;
 }
 
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
 .social-link::before {
   content: '';
-  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-opacity duration-300;
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-opacity duration-300;
 }
 
 .social-link:hover::before {
-  @apply opacity-60;
+  @apply opacity-100;
 }
 
 .social-link:hover {
-  transform: translateY(-4px) translateZ(34px) scale(1.01);
+  transform: translateY(-3px) translateZ(24px) scale(1.01);
   box-shadow:
-    0 16px 34px rgba(0, 0, 0, 0.25),
-    0 4px 10px rgba(255, 255, 255, 0.2) inset;
+    0 14px 24px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .click-wave {
@@ -97,16 +112,9 @@ body {
 
 .card-glow {
   box-shadow:
-    0 18px 80px rgba(5, 15, 30, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-
-.floating-cube {
-  animation: float-cube 6s ease-in-out infinite;
-}
-
-.floating-orb {
-  animation: float-orb 7s ease-in-out infinite;
+    0 24px 90px rgba(4, 18, 33, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .reveal {
@@ -123,26 +131,6 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes float-cube {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(18deg);
-  }
-  50% {
-    transform: translate3d(0, -14px, 0) rotate(28deg);
-  }
-}
-
-@keyframes float-orb {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(0, -18px, 0) scale(1.08);
   }
 }
 
@@ -167,6 +155,30 @@ body {
     opacity: 0;
     transform: translate(-50%, -50%) scale(16);
   }
+}
+
+.tone-linkedin .icon-badge {
+  color: #0a66c2;
+}
+
+.tone-facebook .icon-badge {
+  color: #1877f2;
+}
+
+.tone-instagram .icon-badge {
+  color: #e1306c;
+}
+
+.tone-whatsapp .icon-badge {
+  color: #25d366;
+}
+
+.tone-github .icon-badge {
+  color: #171515;
+}
+
+.tone-email .icon-badge {
+  color: #ef4444;
 }
 
 @media (max-width: 640px) {
