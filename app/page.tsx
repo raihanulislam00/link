@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import type { ChangeEvent, FormEvent } from 'react'
+import Image from 'next/image'
 import { FaLinkedin, FaFacebook, FaInstagram, FaWhatsapp, FaGithub, FaEnvelope } from 'react-icons/fa'
 
 const socialLinks = [
@@ -50,10 +52,54 @@ const socialLinks = [
 
 export default function Home() {
   const [activeLinkId, setActiveLinkId] = useState<number | null>(null)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+  const [isSending, setIsSending] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
 
   const handleLinkClick = (id: number) => {
     setActiveLinkId(id)
     window.setTimeout(() => setActiveLinkId((current) => (current === id ? null : current)), 520)
+  }
+
+  const handleFormChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target
+    setFormData((current) => ({ ...current, [name]: value }))
+  }
+
+  const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setSubmitMessage('')
+    setIsSending(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = (await response.json()) as { message?: string }
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Could not send your message. Please try again.')
+      }
+
+      setSubmitMessage('Message sent successfully. I will get back to you soon.')
+      setFormData({ name: '', email: '', message: '' })
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Could not send your message.'
+      setSubmitMessage(message)
+    } finally {
+      setIsSending(false)
+    }
   }
 
   return (
@@ -68,9 +114,11 @@ export default function Home() {
 
           <div className="relative z-10 text-center mb-10">
             <div className="mb-6 reveal" style={{ animationDelay: '90ms' }}>
-              <img
+              <Image
                 src="/img.jpg"
                 alt="Profile"
+                width={128}
+                height={128}
                 className="avatar-3d mx-auto h-32 w-32 rounded-full border-4 border-white/80 object-cover shadow-2xl"
               />
             </div>
@@ -112,6 +160,65 @@ export default function Home() {
               </a>
             )
           })}
+          </div>
+
+          <div className="relative z-10 mb-8 rounded-2xl border border-white/25 bg-white/10 p-5 sm:p-6">
+            <h2 className="mb-1 text-xl text-[var(--text-main)] [font-family:var(--font-display)] sm:text-2xl">
+              Write to me
+            </h2>
+            <p className="mb-4 text-sm text-[var(--text-muted)]">
+              Send a message and it will be delivered directly to my email.
+            </p>
+
+            <form className="grid gap-3" onSubmit={handleFormSubmit}>
+              <label className="field-label" htmlFor="name">Your Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                value={formData.name}
+                onChange={handleFormChange}
+                className="contact-field"
+                placeholder="Enter your name"
+                required
+              />
+
+              <label className="field-label" htmlFor="email">Your Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleFormChange}
+                className="contact-field"
+                placeholder="name@example.com"
+                required
+              />
+
+              <label className="field-label" htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleFormChange}
+                className="contact-field contact-area"
+                placeholder="Write your message here..."
+                required
+                minLength={8}
+              />
+
+              <button
+                type="submit"
+                disabled={isSending}
+                className="send-button"
+              >
+                {isSending ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
+
+            {submitMessage && (
+              <p className="mt-3 text-sm text-[var(--text-soft)]">{submitMessage}</p>
+            )}
           </div>
 
           <div className="relative z-10 reveal text-center text-xs text-[var(--text-fade)]" style={{ animationDelay: '420ms' }}>
