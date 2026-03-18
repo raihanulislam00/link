@@ -76,9 +76,11 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen overflow-hidden px-4 py-12 sm:px-6 lg:px-8">
+      <div className="bg-grid" aria-hidden />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,255,255,0.16),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(115,245,225,0.14),transparent_40%)]" />
       <div className="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-[var(--blob-sky)] blur-3xl" />
       <div className="pointer-events-none absolute -right-24 bottom-6 h-80 w-80 rounded-full bg-[var(--blob-gold)] blur-3xl" />
+      <div className="bg-flares" aria-hidden />
 
       <section className="scene relative mx-auto w-full max-w-3xl">
         <div className="card-3d card-glow rounded-[2rem] border border-white/30 bg-white/12 p-6 backdrop-blur-2xl sm:p-10">
@@ -91,7 +93,7 @@ export default function Home() {
                 alt="Profile"
                 width={128}
                 height={128}
-                className="avatar-3d mx-auto h-32 w-32 rounded-full border-4 border-white/80 object-cover shadow-2xl"
+                className="avatar-3d avatar-float mx-auto h-32 w-32 rounded-full border-4 border-white/80 object-cover shadow-2xl"
               />
             </div>
             <h1 className="reveal mb-2 text-4xl text-[var(--text-main)] sm:text-6xl [font-family:var(--font-display)]" style={{ animationDelay: '220ms' }}>
@@ -115,6 +117,7 @@ export default function Home() {
                 className={`social-link reveal ${link.tone} group w-full rounded-xl px-4 py-4 text-white shadow-lg ${
                   activeLinkId === link.id ? 'is-clicked' : ''
                 }`}
+                style={{ animationDelay: `${340 + link.id * 90}ms` }}
               >
                 <span className="click-wave" aria-hidden="true" />
                 <span className="flex items-center justify-center gap-3">
@@ -131,7 +134,7 @@ export default function Home() {
           })}
           </div>
 
-          <div className="relative z-10 mb-8 rounded-2xl border border-white/25 bg-white/10 p-5 sm:p-6">
+          <div className="contact-box relative z-10 mb-8 rounded-2xl border border-white/25 bg-white/10 p-5 sm:p-6">
             <h2 className="mb-1 text-xl text-[var(--text-main)] [font-family:var(--font-display)] sm:text-2xl">
               Write to me
             </h2>
