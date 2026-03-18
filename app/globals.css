@@ -236,6 +236,10 @@ body {
   color: #ef4444;
 }
 
+.tone-website .icon-badge {
+  color: #0ea5e9;
+}
+
 @media (max-width: 640px) {
   .card-3d {
     transform: none;

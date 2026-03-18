@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import type { ChangeEvent, FormEvent } from 'react'
 import Image from 'next/image'
-import { FaLinkedin, FaFacebook, FaInstagram, FaWhatsapp, FaGithub, FaEnvelope } from 'react-icons/fa'
+import { FaLinkedin, FaFacebook, FaInstagram, FaWhatsapp, FaGithub, FaEnvelope, FaGlobe } from 'react-icons/fa'
 
 const socialLinks = [
   {
@@ -47,6 +47,13 @@ const socialLinks = [
     url: 'mailto:raihanulislamnahid22@gmail.com',
     icon: FaEnvelope,
     tone: 'tone-email',
+  },
+  {
+    id: 7,
+    name: 'Website',
+    url: 'https://raihanulislam.vercel.app/',
+    icon: FaGlobe,
+    tone: 'tone-website',
   },
 ]
 
@@ -123,13 +130,13 @@ export default function Home() {
               />
             </div>
             <p className="reveal mb-3 text-xs font-semibold uppercase tracking-[0.38em] text-[var(--text-soft)]" style={{ animationDelay: '150ms' }}>
-              Raihanul Islam
+              Personal Website
             </p>
             <h1 className="reveal mb-2 text-4xl text-[var(--text-main)] sm:text-6xl [font-family:var(--font-display)]" style={{ animationDelay: '220ms' }}>
-              Software Engineer
+              Raihanul Islam
             </h1>
             <p className="reveal mx-auto max-w-xl text-sm text-[var(--text-muted)] sm:text-base" style={{ animationDelay: '280ms' }}>
-              Building thoughtful digital products and clean user experiences.
+              Software Engineer. Building thoughtful digital products and clean user experiences.
             </p>
           </div>
 
