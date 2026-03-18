@@ -3,53 +3,18 @@
 import { useState } from 'react'
 import type { ChangeEvent, FormEvent } from 'react'
 import Image from 'next/image'
-import { FaLinkedin, FaFacebook, FaInstagram, FaWhatsapp, FaGithub, FaEnvelope, FaGlobe } from 'react-icons/fa'
+import { FaWhatsapp, FaGlobe } from 'react-icons/fa'
 
 const socialLinks = [
   {
     id: 1,
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/raihanulislam00/',
-    icon: FaLinkedin,
-    tone: 'tone-linkedin',
-  },
-  {
-    id: 2,
-    name: 'Facebook',
-    url: 'https://www.facebook.com/raihanulislam00',
-    icon: FaFacebook,
-    tone: 'tone-facebook',
-  },
-  {
-    id: 3,
-    name: 'Instagram',
-    url: 'https://www.instagram.com/raihanulislam0/',
-    icon: FaInstagram,
-    tone: 'tone-instagram',
-  },
-  {
-    id: 4,
     name: 'WhatsApp',
     url: 'https://wa.me/qr/XJ2XP6VE27Z4M1',
     icon: FaWhatsapp,
     tone: 'tone-whatsapp',
   },
   {
-    id: 5,
-    name: 'GitHub',
-    url: 'https://github.com/raihanulislam00',
-    icon: FaGithub,
-    tone: 'tone-github',
-  },
-  {
-    id: 6,
-    name: 'Email',
-    url: 'mailto:raihanulislamnahid22@gmail.com',
-    icon: FaEnvelope,
-    tone: 'tone-email',
-  },
-  {
-    id: 7,
+    id: 2,
     name: 'Website',
     url: 'https://raihanulislam.vercel.app/',
     icon: FaGlobe,
@@ -129,14 +94,11 @@ export default function Home() {
                 className="avatar-3d mx-auto h-32 w-32 rounded-full border-4 border-white/80 object-cover shadow-2xl"
               />
             </div>
-            <p className="reveal mb-3 text-xs font-semibold uppercase tracking-[0.38em] text-[var(--text-soft)]" style={{ animationDelay: '150ms' }}>
-              Personal Website
-            </p>
             <h1 className="reveal mb-2 text-4xl text-[var(--text-main)] sm:text-6xl [font-family:var(--font-display)]" style={{ animationDelay: '220ms' }}>
               Raihanul Islam
             </h1>
             <p className="reveal mx-auto max-w-xl text-sm text-[var(--text-muted)] sm:text-base" style={{ animationDelay: '280ms' }}>
-              Software Engineer. Building thoughtful digital products and clean user experiences.
+              Software Engineer
             </p>
           </div>
 
