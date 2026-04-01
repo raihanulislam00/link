@@ -7,8 +7,7 @@ A modern, simple website to showcase your social media profiles built with Next.
 - ✨ Clean, modern design with dark mode
 - 📱 Fully responsive layout
 - 🎨 Beautiful gradient background
-- 🔗 Quick links to LinkedIn, Facebook, Instagram, WhatsApp, GitHub, and Email
-- ✉️ Contact form that sends messages directly to your email inbox
+- 🔗 Quick links to LinkedIn, Facebook, Instagram, WhatsApp, Twitter, GitHub, and Email
 - ⚡ Fast performance with Next.js
 - 🎯 Easy to customize
 
@@ -26,26 +25,12 @@ A modern, simple website to showcase your social media profiles built with Next.
 npm install
 ```
 
-2. Create your environment file:
-
-```bash
-cp .env.example .env.local
-```
-
-3. Update SMTP values in `.env.local`:
-
-- `SMTP_HOST` (example: `smtp.gmail.com`)
-- `SMTP_PORT` (example: `465`)
-- `SMTP_USER` (your sender email)
-- `SMTP_PASS` (SMTP password or Gmail app password)
-- `CONTACT_RECEIVER_EMAIL` (your inbox email)
-
-4. Start the development server:
+2. Start the development server:
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Customization
 
@@ -65,7 +50,8 @@ Edit `app/page.tsx` to customize your profile:
   name: 'LinkedIn',
   url: 'https://linkedin.com/in/yourprofile',
   icon: FaLinkedin,
-  tone: 'tone-linkedin',
+  color: 'hover:bg-blue-600',
+  bgColor: 'bg-blue-500',
 }
 ```
 
@@ -82,7 +68,6 @@ Edit `app/page.tsx` to customize your profile:
 - **Tailwind CSS** - Utility-first CSS framework
 - **React Icons** - Icon library
 - **TypeScript** - Type safety
-- **Nodemailer** - SMTP email sending from API route
 
 ## License
 

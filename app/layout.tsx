@@ -1,21 +1,9 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, DM_Serif_Display } from 'next/font/google'
 import './globals.css'
 
-const sans = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-sans',
-})
-
-const display = DM_Serif_Display({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-display',
-})
-
 export const metadata: Metadata = {
-  title: 'Personal Link Hub',
-  description: 'A stylish place to find all of my social profiles',
+  title: 'My Social Links',
+  description: 'Check out my social media profiles',
 }
 
 export default function RootLayout({
@@ -28,7 +16,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={`${sans.variable} ${display.variable} min-h-screen`}>
+      <body className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen">
         {children}
       </body>
     </html>
