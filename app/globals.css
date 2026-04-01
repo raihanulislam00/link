@@ -95,6 +95,45 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.hero-panel {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.3));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.profile-stack {
+  margin-top: 8px;
+}
+
+.soft-divider {
+  height: 1px;
+  width: 100%;
+  margin-top: 18px;
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  opacity: 0.6;
+}
+
+.name-role {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  width: fit-content;
+}
+
+@media (min-width: 640px) {
+  .name-role {
+    font-size: 1.1rem;
+  }
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -255,16 +294,66 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
-  width: 42px;
+  height: 46px;
+  width: 46px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.16);
   color: #e2e8f0;
 }
 
+.link-card {
+  position: relative;
+  min-height: 160px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.link-card::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), transparent 55%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.link-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.social-link:hover .link-card::after {
+  opacity: 1;
+}
+
+.links-grid {
+  gap: 22px;
+}
+
+.link-meta {
+  letter-spacing: 0.02em;
+}
+
+.link-arrow {
+  letter-spacing: 0.2em;
+}
+
 .social-link {
   border-radius: 1rem;
   position: relative;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.35);
 }
 
 .social-link .click-wave {

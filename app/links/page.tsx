@@ -54,23 +54,8 @@ export default function LinksPage() {
             </Link>
           </div>
 
-          <div className="relative z-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div className="space-y-2 text-left text-white">
-              <p className="eyebrow">Social & web</p>
-              <h1 className="text-4xl font-semibold leading-tight sm:text-5xl [font-family:var(--font-display)]">
-                Curated links
-              </h1>
-              <p className="max-w-xl text-base text-white/70 sm:text-lg">
-                Quick access to my most-used touch points. Tap to open or hop to the inbox page to say hi.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link href="/write-to-me" className="pill-btn pill-btn-primary">
-                  Write to me Anything
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative mx-auto flex w-full max-w-[220px] justify-center sm:mx-0">
+          <div className="profile-stack relative z-10 flex flex-col items-center gap-6">
+            <div className="relative mx-auto flex w-full max-w-[220px] justify-center">
               <div className="avatar-ring" aria-hidden />
               <Image
                 src="/img.jpg"
@@ -81,9 +66,17 @@ export default function LinksPage() {
               />
               <div className="badge-floating">Online</div>
             </div>
+
+            <div className="hero-panel space-y-2 text-center text-white">
+              <div className="name-role text-sm text-white/70 sm:text-base mx-auto">
+                <span className="font-semibold text-white">Raihanul Islam</span> · Software Engineer
+              </div>
+            </div>
           </div>
 
-          <div className="relative z-10 mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="soft-divider" aria-hidden />
+
+          <div className="links-grid relative z-10 mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {socialLinks.map((link) => {
               const Icon = link.icon
               return (
@@ -98,17 +91,17 @@ export default function LinksPage() {
                   }`}
                 >
                   <span className="click-wave" aria-hidden="true" />
-                  <div className="flex h-full flex-col rounded-[1.1rem] bg-slate-900/80 p-5 transition-all duration-300 group-hover:bg-slate-900/60">
+                  <div className="link-card flex h-full flex-col rounded-[1.1rem] bg-slate-900/80 p-5 transition-all duration-300 group-hover:bg-slate-900/60">
                     <div className="flex items-center gap-3">
                       <span className="icon-badge">
                         <Icon className="text-lg transition-transform duration-300 group-hover:scale-110" />
                       </span>
                       <div className="flex flex-col">
                         <span className="text-base font-semibold tracking-wide text-white">{link.name}</span>
-                        <span className="text-xs text-white/70">Tap to open</span>
+                        <span className="link-meta text-xs text-white/70">Tap to open</span>
                       </div>
                     </div>
-                    <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/70 transition-all duration-300 group-hover:translate-x-1">
+                    <span className="link-arrow mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/70 transition-all duration-300 group-hover:translate-x-1">
                       Visit
                       <span aria-hidden>→</span>
                     </span>

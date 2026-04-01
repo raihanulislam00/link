@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'My Social Links',
+  title: 'Raihanul Islam',
   description: 'Check out my social media profiles',
 }
 
