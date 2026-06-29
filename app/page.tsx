@@ -1,66 +1,82 @@
 import Link from 'next/link'
-import { FaLink, FaEnvelopeOpenText } from 'react-icons/fa'
+import { FaEnvelopeOpenText, FaLink } from 'react-icons/fa'
 
 const navigation = [
   {
     href: '/links',
     title: 'Links',
-    description: 'View my latest social and web links.',
+    description: 'View my latest social and web links, all gathered in one place.',
     icon: FaLink,
+    label: 'Explore',
   },
   {
     href: '/write-to-me',
     title: 'Write to me',
-    description: 'Send a direct message that lands in my inbox.',
+    description: 'Send a direct message that lands straight in my inbox.',
     icon: FaEnvelopeOpenText,
+    label: 'Connect',
   },
 ]
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden px-4 py-16 sm:px-6 lg:px-8">
-      <div className="bg-grid" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,255,255,0.16),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(115,245,225,0.14),transparent_40%)]" />
-      <div className="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-[var(--blob-sky)] blur-3xl" />
-      <div className="pointer-events-none absolute -right-24 bottom-6 h-80 w-80 rounded-full bg-[var(--blob-gold)] blur-3xl" />
+    <main className="relative min-h-screen overflow-hidden bg-[#07090d] px-4 py-16 text-slate-100 sm:px-6 lg:px-8">
+      <div className="grid-tex" aria-hidden />
 
-      <section className="relative mx-auto flex w-full max-w-4xl flex-col items-center gap-10 text-center">
-        <div className="card-3d card-glow relative w-full rounded-[2rem] border border-white/30 bg-white/12 p-8 backdrop-blur-2xl sm:p-12">
-          <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[linear-gradient(125deg,rgba(255,255,255,0.32),rgba(255,255,255,0.08)_40%,rgba(255,255,255,0.03)_100%)]" />
-
-          <div className="relative z-10 space-y-4">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/70">Welcome</p>
-            <h1 className="text-4xl font-bold text-white sm:text-6xl">Choose your destination</h1>
-            <p className="mx-auto max-w-2xl text-base text-white/70 sm:text-lg">
-              I split the experience into two focused pages. Pick where you want to go.
+      <div className="mx-auto w-full max-w-5xl">
+        <div className="destination-shell rounded-[2rem] border border-white/10 bg-slate-950/80 p-8 shadow-2xl backdrop-blur-xl sm:p-12">
+          <header className="text-center mb-16">
+            <div className="mark mx-auto mb-7 inline-flex items-center gap-3">
+              <span className="dot" />
+              RAIHANUL ISLAM
+            </div>
+            <h1 className="text-4xl font-semibold leading-tight sm:text-6xl">
+              Choose your
+              <span className="block emphasized">destination.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-400">
+              I split the experience into two focused pages — pick where you want to go.
             </p>
+          </header>
+
+          <div className="network mx-auto mb-12 h-16 max-w-3xl">
+            <svg viewBox="0 0 640 64" preserveAspectRatio="none" className="h-full w-full">
+              <path className="line" d="M40,32 C220,32 420,32 600,32" />
+              <path className="pulse" d="M40,32 C220,32 420,32 600,32" />
+              <circle className="node-dot" cx="40" cy="32" r="6" />
+              <circle className="node-dot" cx="600" cy="32" r="6" />
+            </svg>
           </div>
 
-          <div className="relative z-10 mt-10 grid w-full gap-4 sm:grid-cols-2">
-            {navigation.map((item) => {
+          <div className="destinations grid gap-1 overflow-hidden rounded-[1.5rem] border border-white/10 bg-transparent md:grid-cols-2">
+            {navigation.map((item, index) => {
               const Icon = item.icon
               return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="group flex h-full flex-col gap-3 rounded-2xl border border-white/20 bg-white/10 p-6 text-left text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/15 hover:shadow-2xl"
-                >
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/15 text-lg transition-transform duration-300 group-hover:scale-110">
-                    <Icon />
-                  </span>
-                  <div className="space-y-1">
-                    <h2 className="text-2xl font-semibold">{item.title}</h2>
-                    <p className="text-sm text-white/70">{item.description}</p>
+                <Link key={item.href} href={item.href} className={`dest ${index === 1 ? 'alt' : ''}`}>
+                  <span className="idx">0{index + 1} — {item.label}</span>
+                  <div className="icon-row">
+                    <div className="icon-circle">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="arrow">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M5 12h14" />
+                        <path d="M13 6l6 6-6 6" />
+                      </svg>
+                    </div>
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-wide text-white/70 transition-all duration-300 group-hover:translate-x-1">
-                    Go to {item.title}
-                  </span>
+                  <h2>{item.title}</h2>
+                  <p>{item.description}</p>
                 </Link>
               )
             })}
           </div>
+
+          <footer className="mt-12 text-center text-xs uppercase tracking-[0.3em] text-slate-500">
+            Crafted with care · <span className="text-sky-300">Raihanul Islam</span>
+          </footer>
         </div>
-      </section>
+      </div>
     </main>
   )
 }
