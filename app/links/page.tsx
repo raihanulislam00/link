@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { FaWhatsapp, FaGlobe, FaBookOpen, FaTrophy, FaArrowLeft } from "react-icons/fa"
+import { FaWhatsapp, FaGlobe, FaBookOpen, FaTrophy, FaArrowLeft, FaLinkedin, FaGithub, FaFacebook } from "react-icons/fa"
 import Link from "next/link"
 
 const socialLinks = [
@@ -11,6 +11,27 @@ const socialLinks = [
     url: "https://wa.me/qr/XJ2XP6VE27Z4M1",
     icon: FaWhatsapp,
     tone: "whatsapp",
+  },
+  {
+    id: 5,
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/raihanulislam00/",
+    icon: FaLinkedin,
+    tone: "linkedin",
+  },
+  {
+    id: 6,
+    name: "GitHub",
+    url: "https://github.com/raihanulislam00",
+    icon: FaGithub,
+    tone: "github",
+  },
+  {
+    id: 7,
+    name: "Facebook",
+    url: "https://www.facebook.com/raihanulislam00",
+    icon: FaFacebook,
+    tone: "facebook",
   },
   {
     id: 2,
